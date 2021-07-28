@@ -2,23 +2,118 @@
 <html>
 
 <head>
+    <!-- Carregando uma biblioteca de ícones para utilizar na construção do site -->
     <script src="https://kit.fontawesome.com/740c20cf52.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./styles/main.css">
+    <!-- Carregamento da biblioteca de estilos CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
 </head>
 
 <body>
-    <div class="content">
-    <img src="./img/logo.png" class="logo">
-    
-        <h3>Federal Supermercado</h3>
-        <p>E-mail: <u>federal.supermercado@gmail.com</u></p>
-        <p>Telefone Para Contato: (12) 3122-3126</p>
-        <p>Endereço: Rua Ponciano Martins Ribeiro Nº 10</p>
-        <p>Parque Santa Clara - Guaratinguetá - São Paulo</p>
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=5512991509416&text=Bem vindo ao Supermercado Federal!"><i class="fab fa-whatsapp"></i> (12) 9 9150-9416</p>
-        <a target="_blank" href="https://www.instagram.com/federalsupermercado?r=nametag"><i class="fab fa-instagram"></i> @federalsupermercado</p>
-        <a target="_blank" href="https://www.facebook.com/federalsupermercado/"><i class="fab fa-facebook-square"></i> /federalsupermercado</p>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v11.0" nonce="cm86xHmy"></script>
+
+    <!-- Menu de overlay, para dispositivos pequenos -->
+    <div id="navoverlay" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="#inicio">INÍCIO</a>
+            <a href="#ofertas">OFERTAS</a>
+            <a href="#sobre">SOBRE NÓS</a>
+            <a href="#trabalheconosco">TRABALHE CONOSCO</a>
+        </div>
     </div>
+    <!-- Barra de navegação que fica no topo -->
+    <div class="topnav" id="topnavbar">
+        <a href="#inicio"> INÍCIO</a>
+        <a href="#ofertas"> OFERTAS</a>
+        <a href="#sobre"> SOBRE NÓS</a>
+        <a href="#trabalheconosco"> TRABALHE CONOSCO</a>
+        <a href="javascript:void(0);" class="icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </a>
+        <a href="#inicio" class="shield">
+            <img src="../img/Shield.png" alt="Federal Supermercado" id="shield">
+        </a>
+    </div>
+
+    <!-- Logo do supermercado, como destaque inicial -->
+    <div class="header" id="inicio">
+        <img src="../img/Federal.png" class="logo">
+    </div>
+
+    <!-- O conteúdo do site -->
+    <div class="content">
+        <div class="page-white" id="institucional">
+            <h3>SEJA BEM VINDO!</h3>
+            <p>A nossa equipe agradece a visita!</p>
+            <p>Estamos trabalhando duro para oferecer aos nossos</p>
+            <p>clientes sempre o melhor serviço com um ótimo preço!</p>
+        </div>
+        <div class="page-green" id="ofertas">
+            <img src="../img/BG1.png" id="bg1">
+            <div class="block">
+                <h3>ACOMPANHE NOSSAS OFERTAS NAS REDES SOCIAIS</h3>
+                <div class="fb-page" data-href="https://www.facebook.com/federalsupermercado/" data-tabs="timeline" data-width="400" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/federalsupermercado/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/federalsupermercado/">Federal Supermercado</a></blockquote></div>
+            </div>
+        </div>
+        <div class="page-white" id="sobre">
+            <h3>LOCALIZAÇÃO E CONTATO</h3>
+            <p>Rua Ponciano Martins Ribeiro Nº 10</p>
+            <p>Parque Santa Clara - Guaratinguetá - São Paulo</p>
+            <p>(12) 9 9150-9416 | (12) 3122-3126</p>
+        </div>
+        <div class="page-green" id="trabalheconosco">
+            <img src="../img/BG2.png" id="bg1">
+            <div class="block">
+                <h3>EM BREVE ACEITAREMOS CURRÍCULOS POR AQUI</h3>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="https://api.whatsapp.com/send?phone=5512991509416&text=Bem%20vindo%20ao%20Supermercado%20Federal!" class="fa fa-whatsapp"></a>
+            <a href="https://www.facebook.com/federalsupermercado/" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/federalsupermercado/?r=nametag" class="fa fa-instagram"></a>
+        </div>
+    </div>
+    <!--
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        /* Função pra abrir o overlay em telas pequenas */
+        function openNav() {
+            document.getElementById("navoverlay").style.height = "100%";
+        }
+
+        /* Função pra fechar o overlay em telas pequenas */
+        function closeNav() {
+            document.getElementById("navoverlay").style.height = "0%";
+        }
+
+        $(document).ready(function () {
+            /* Todos os links tem scrool lento */
+            $("a").on('click', function (event) {
+
+                /* Definindo que "this.hash" tenha um valor antes de sobrepor o comportamento */
+                if (this.hash !== "") {
+                    /* Previne o comportamento de âncora ao clicar */
+                    event.preventDefault();
+
+                    /* Guarda o "hash" */
+                    var hash = this.hash;
+
+                    /* Usando o método jQuery para animar devagar a descida de página com o tempo em milissegundos */
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top - 48
+                    }, 600, function () {
+                    });
+                } /* Termina o if */
+            });
+        });
+    </script>
 </body>
 
 </html>
